@@ -13,6 +13,7 @@
   --CORNFLOWER: #e7e9fc;
   --LIGHT-SLATE: #8e8f99;
   --GREY: #2e2f42b2;
+  --DAIRY: #fcfcfc;
 }
 
 body {
@@ -30,6 +31,10 @@ img {
 ul,
 ol {
   list-style: none;
+}
+
+.menu li {
+  padding: 24px 0;
 }
 
 .container {
@@ -83,10 +88,6 @@ ol {
   color: var(--CLOUD);
 }
 
-.menu li {
-  padding: 24px 0;
-}
-
 .menu-item {
   font-weight: 500;
   font-size: 16px;
@@ -94,6 +95,9 @@ ol {
   letter-spacing: 0.02em;
   color: var(--NAVY-BLUE);
   padding: 24px 0;
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .address-list {
@@ -110,6 +114,9 @@ ol {
 
 .address-list-item {
   color: var(--NAVY-BLUE);
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .address {
@@ -125,11 +132,20 @@ ol {
 
 .menu-item:hover,
 .menu-item:focus,
-.menu-item:active,
 .address-list-item:focus,
-.address-list-item:hover,
-.address-list-item:active {
+.address-list-item:hover {
   color: var(--OCEAN);
+}
+
+.active::after {
+  content: "";
+  width: 100%;
+  height: 4px;
+  background-color: var(--OCEAN);
+  border-radius: 2px;
+  display: block;
+  position: relative;
+  top: 24px;
 }
 
 .btn-index {
@@ -147,6 +163,9 @@ ol {
   padding: 16px 32px;
   border: none;
   border-radius: 4px;
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-index:hover,
@@ -169,6 +188,9 @@ ol {
   border-radius: 4px;
   box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.12),
     0px 2px 1px 0px rgba(0, 0, 0, 0.08), 0px 3px 1px 0px rgba(0, 0, 0, 0.1);
+  transition-property: color, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn:hover,
@@ -286,6 +308,9 @@ ol {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-footer-link:hover,
@@ -427,6 +452,39 @@ ol {
   width: 360px;
   gap: 32px;
   width: calc((100% - 48px) / 3);
+  transition-property: box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.box-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 360px;
+  height: 300px;
+  background-color: var(--IRIS);
+  transform: translateY(100%);
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: ease-in-out;
+}
+
+.card-list-item:hover .overlay {
+  transform: translateY(0);
+}
+
+.overlay-text {
+  color: var(--CLOUD);
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.32px;
+  padding: 40px 32px 164px;
 }
 
 .card-list-item-text {
@@ -467,6 +525,9 @@ ol {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social-icons-link:hover,
@@ -497,6 +558,9 @@ ol {
   align-items: center;
   justify-content: center;
   color: var(--LIGHT-SLATE);
+  transition-property: border-color, color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .clients-list-item-link:hover,
@@ -509,9 +573,52 @@ ol {
   fill: currentColor;
 }
 
-.card-list-item a:hover,
-.card-list-item a:focus {
+.card-list-item:hover,
+.card-list-item:focus {
   box-shadow: 0px 2px 1px 0px rgba(46, 47, 66, 0.08),
     0px 1px 1px 0px rgba(46, 47, 66, 0.16),
     0px 1px 6px 0px rgba(46, 47, 66, 0.08);
+}
+
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(46, 47, 66, 0.4);
+}
+
+.modal {
+  width: 408px;
+  height: 584px;
+  background-color: var(--DAIRY);
+  border-radius: 4px;
+  box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.12), 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
+  position: absolute;
+  top: 80px;
+  left: 516px;
+}
+
+.close-button {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background-color: var(--CORNFLOWER);
+  color: var(--NAVY-BLUE);
+  cursor: pointer;
+  position: absolute;
+  top: 24px;
+  left: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px #0000001a;
 }
