@@ -454,6 +454,9 @@ ol {
   width: 360px;
   gap: 32px;
   width: calc((100% - 48px) / 3);
+}
+
+.link-transition {
   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -464,7 +467,7 @@ ol {
 
 .card-list-item:hover .overlay-text,
 .card-list-item:focus .overlay-text {
-  transform: translateY(0);
+  transform: translateY(0%);
 }
 
 .overlay-text {
