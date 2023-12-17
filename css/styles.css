@@ -466,8 +466,8 @@ ol {
   overflow: hidden;
 }
 
-.card-list-item:hover .overlay-text,
-.card-list-item:focus .overlay-text {
+.link-transition:hover .overlay-text,
+.link-transition:focus .overlay-text {
   transform: translateY(0%);
 }
 
