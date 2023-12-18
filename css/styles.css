@@ -150,7 +150,8 @@ ol {
   border-radius: 2px;
   display: block;
   position: absolute;
-  bottom: -4px;
+  bottom: -1px;
+  margin-bottom: -3px;
 }
 
 .btn-index {
